@@ -14,23 +14,23 @@ export default {
       dataHoraInicio = new Date(dataHoraInicio);
       dataHoraFim = new Date(dataHoraFim);
       const dataAtual = new Date();
-
       dataAtual.setHours(dataAtual.getHours() - 3); // Ajusta o fuso horário para o horário de Brasília
 
       let resposta = null;
-
+      // RN27 - dataHoraInicioReserva e dataHoraFimReserva de Reserva devem ser obrigatórios.
       resposta = verificarCampoObrigatorio(
         dataHoraInicio,
         "Data e hora de início"
       );
       if (resposta) return response.status(400).send(resposta);
-
       resposta = verificarCampoObrigatorio(dataHoraFim, "Data e hora de fim");
       if (resposta) return response.status(400).send(resposta);
 
+      // RN9 - O identificador do Laboratório deve ser obrigatório. 
       resposta = verificarCampoObrigatorio(laboratorioId, "Laboratório");
       if (resposta) return response.status(400).send(resposta);
 
+      // RN16 - Uma Reserva só poderá ser criada para um único Laboratório ativo.
       resposta = validarId(laboratorioId);
       if (resposta) return response.status(400).send(resposta);
 
