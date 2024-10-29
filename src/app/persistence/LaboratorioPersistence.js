@@ -92,7 +92,7 @@ export default {
       };
     }
   },
-  // funções auxiliares
+  
   async obterLaboratorioPorId(id) {
     try {
       const laboratorio = await prisma.laboratorio.findUnique({

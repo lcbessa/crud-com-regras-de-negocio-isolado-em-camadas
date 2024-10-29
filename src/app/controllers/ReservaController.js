@@ -30,7 +30,6 @@ export default {
       resposta = verificarCampoObrigatorio(laboratorioId, "Laboratório");
       if (resposta) return response.status(400).send(resposta);
 
-      // RN16 - Uma Reserva só poderá ser criada para um único Laboratório ativo.
       resposta = validarId(laboratorioId);
       if (resposta) return response.status(400).send(resposta);
 

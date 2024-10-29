@@ -7,7 +7,7 @@ export default {
       const dataAtual = new Date();
       dataAtual.setHours(dataAtual.getHours() - 3);
 
-      // Relação com laboratório( O laboratório deve existir para que a reserva seja feita.)
+      // RN16 - Uma Reserva só poderá ser criada para um único Laboratório ativo.
       const laboratorio = await laboratorioPersistence.obterLaboratorioPorId(
         reserva.laboratorioId
       );
