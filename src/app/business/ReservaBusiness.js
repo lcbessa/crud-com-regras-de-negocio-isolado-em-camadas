@@ -18,7 +18,7 @@ export default {
         };
       }
 
-      // Uma Reserva só pode ser feita para datas futuras, não passadas.
+      // RN30 - Uma Reserva só pode ser feita para datas futuras, não passadas.
       if (isBefore(reserva.dataHoraInicio, dataAtual)) {
         return {
           status: 400,
@@ -37,7 +37,7 @@ export default {
         };
       }
 
-      // A reserva no mesmo dia (A reserva deve começar e terminar no mesmo dia).
+      // RN32 - Uma Reserva deve começar e terminar no mesmo dia.
       if (!isSameDay(reserva.dataHoraInicio, reserva.dataHoraFim)) {
         console.log("reserva.dataHoraInicio", reserva.dataHoraInicio);
         console.log("reserva.dataHoraFim", reserva.dataHoraFim);
@@ -47,7 +47,7 @@ export default {
         };
       }
 
-      // Restrição de horário da Reserva (A reserva deve começar e terminar em horas cheias ou meias horas.)
+      // RN29 - Uma Reserva deve começar ou terminar em hora inteira ou meia hora.
       const erroHorario = this.validarHorarioReserva(
         reserva.dataHoraInicio,
         reserva.dataHoraFim
@@ -56,7 +56,7 @@ export default {
         return erroHorario;
       }
 
-      // A reserva não pode ser feita para um laboratório que já tenha uma reserva no mesmo horário.
+      // RN33 - Não pode haver mais de uma Reserva para o mesmo Laboratório no mesmo horário.
       const conflitoDeReserva = await this.conflitoReserva(
         reserva.laboratorioId,
         reserva.dataHoraInicio,
