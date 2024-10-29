@@ -27,7 +27,7 @@ export default {
         };
       }
 
-      // A reserva deve ter no mínimo 1 hora de duração.
+      // RN31 - Uma Reserva deve ter uma duração mínima de 1 hora.
       if (
         differenceInMinutes(reserva.dataHoraFim, reserva.dataHoraInicio) < 60
       ) {
@@ -144,7 +144,7 @@ export default {
         };
       }
 
-      // A reserva deve ter no mínimo 1 hora de duração.
+      // RN31 - Uma Reserva deve ter uma duração mínima de 1 hora.
       if (
         differenceInMinutes(
           reservaASerAtualizada.dataHoraFim,
